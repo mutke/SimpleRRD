@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'simple_rrd'
   s.version     = '0.0.1'
-  s.date        = '2013-10-11'
+  s.date        = '2014-01-03'
   s.summary     = "Simple RRD Interface"
   s.description = "Simplified Create, Read, Update, Delete wrapper for rrdtool"
   s.authors     = ["Michael Utke, Jr."]

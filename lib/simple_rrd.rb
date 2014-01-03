@@ -23,8 +23,8 @@ require 'RRD'
 #
 # Author::  Michael Utke, Jr. (mailto:mutke@shutterfly.com)
 # Website:: http://www.shutterfly.com
-# Date::    Friday Oct 11, 2013
-# Copyright:: (c) Shutterfly, Inc. 2010-2013. All Rights reserved.
+# Date::    Friday Jan 3, 2014
+# Copyright:: (c) Shutterfly, Inc. 2010-2014. All Rights reserved.
 # License::
 #   This file is part of SimpleRRD.
 #
