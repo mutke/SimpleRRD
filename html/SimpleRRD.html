@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class SimpleRRD - RDoc Documentation</title>
+<title>class SimpleRRD - SimpleRRD</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -362,13 +362,16 @@ to 0.01</p>
 
         <div class="method-description">
           
-          
+          <p>Class accessor for @@DS_NAME</p>
+
+<p>@return [String] Value of default <a href="SimpleRRD.html">SimpleRRD</a>
+data source name</p>
           
           
 
           
           <div class="method-source-code" id="DS_NAME-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 101</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">DS_NAME</span>
     <span class="ruby-identifier">@@DS_NAME</span>
 <span class="ruby-keyword">end</span></pre>
@@ -395,13 +398,15 @@ to 0.01</p>
 
         <div class="method-description">
           
-          
+          <p>Class accessor for @@SUPPORTED_KINDS</p>
+
+<p>@return [Array] List of supported @kind values</p>
           
           
 
           
           <div class="method-source-code" id="SUPPORTED_KINDS-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-constant">SUPPORTED_KINDS</span>
     <span class="ruby-identifier">@@SUPPORTED_KINDS</span>
 <span class="ruby-keyword">end</span></pre>
@@ -443,7 +448,7 @@ object. @return [nil] nil if file exists but is not SimpleRRD-compatible.</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 113</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">file_path</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">timestamp</span>=<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">now</span>)
     <span class="ruby-ivar">@path</span> = <span class="ruby-identifier">file_path</span>
     <span class="ruby-ivar">@when</span> = <span class="ruby-identifier">timestamp</span>
@@ -536,7 +541,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 156</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 167</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path_empty?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">exists?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">valid?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">mkdir_if_needed</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
@@ -604,7 +609,7 @@ by EUID. @return [nil] nil if @path is nil or empty or file does not exist.</p>
 
           
           <div class="method-source-code" id="delete-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 266</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 277</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">exists?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">writable?</span>
@@ -643,7 +648,7 @@ nil if @path is nil or empty.</p>
 
           
           <div class="method-source-code" id="exists-3F-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 292</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 303</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">exists?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path_empty?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">path</span>)
@@ -681,7 +686,7 @@ has no updates.</p>
 
           
           <div class="method-source-code" id="last_update_time-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 280</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 291</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">last_update_time</span>
     <span class="ruby-identifier">val</span> = <span class="ruby-identifier">info_rrd</span>[<span class="ruby-string">&#39;last_update&#39;</span>]
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">nil?</span>
@@ -710,13 +715,15 @@ has no updates.</p>
 
         <div class="method-description">
           
-          
+          <p>Set a new @path for the underlying RRD file.</p>
+
+<p>@return [String] New @path value</p>
           
           
 
           
           <div class="method-source-code" id="path-3D-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 130</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 141</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">path=</span>(<span class="ruby-identifier">new_path</span>=<span class="ruby-keyword">nil</span>)
     <span class="ruby-ivar">@path</span> = <span class="ruby-identifier">new_path</span>
     <span class="ruby-identifier">read_in_ivars</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@path</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">readable?</span>
@@ -759,7 +766,7 @@ rrdtool-provided resolution if unable to match specified @step.</p>
 
           
           <div class="method-source-code" id="read-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 201</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 212</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">seconds</span>=<span class="ruby-value">86400</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">exists?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">readable?</span>
     <span class="ruby-identifier">user_requested_step</span> = <span class="ruby-ivar">@step</span><span class="ruby-operator">+</span><span class="ruby-value">0</span>
@@ -830,7 +837,7 @@ href="SimpleRRD.html">SimpleRRD</a>.</p>
 
           
           <div class="method-source-code" id="readable-3F-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 301</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 312</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">readable?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">exists?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">info_rrd</span>[<span class="ruby-string">&#39;rra[0].cf&#39;</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;LAST&#39;</span>
@@ -872,7 +879,7 @@ file does not exist.</p>
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 247</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 258</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">values</span>=[])
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">exists?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">valid?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">writable?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@when</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">last_update_time</span>
@@ -917,7 +924,7 @@ file does not exist.</p>
 
           
           <div class="method-source-code" id="valid-3F-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 139</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 150</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-identifier">path_empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@when</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Time</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@step</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> 
            <span class="ruby-ivar">@kind</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">@@SUPPORTED_KINDS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@kind</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>.<span class="ruby-identifier">to_sym</span>) <span class="ruby-operator">&amp;&amp;</span>
@@ -959,7 +966,7 @@ file does not exist.</p>
 
           
           <div class="method-source-code" id="writable-3F-source">
-            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 310</span>
+            <pre><span class="ruby-comment"># File lib/simple_rrd.rb, line 321</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">writable?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">exists?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">writable?</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">readable?</span>

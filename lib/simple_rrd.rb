@@ -67,6 +67,10 @@ class SimpleRRD
 
     # Data Source Type (DST) supported by this class
     @@SUPPORTED_KINDS = [:GAUGE, :COUNTER, :DERIVE, :ABSOLUTE]
+
+    # Class accessor for @@SUPPORTED_KINDS
+    #
+    # @return [Array] List of supported @kind values
     def self.SUPPORTED_KINDS
         @@SUPPORTED_KINDS
     end
@@ -98,6 +102,10 @@ class SimpleRRD
     # Default name used to reference the SimpleRRD data source
     # Defaults to 'dataset'
     @@DS_NAME = 'data_source'
+
+    # Class accessor for @@DS_NAME
+    #
+    # @return [String] Value of default SimpleRRD data source name
     def self.DS_NAME
         @@DS_NAME
     end
@@ -127,6 +135,9 @@ class SimpleRRD
         read_in_ivars if readable? # File already exists, so read in ivars
     end
     
+    # Set a new @path for the underlying RRD file.
+    #
+    # @return [String] New @path value
     def path=(new_path=nil)
         @path = new_path
         read_in_ivars if @path && readable?
